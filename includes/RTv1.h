@@ -6,7 +6,7 @@
 /*   By: nsikora <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 11:14:24 by nsikora           #+#    #+#             */
-/*   Updated: 2018/05/07 14:57:00 by nsikora          ###   ########.fr       */
+/*   Updated: 2018/05/10 11:49:06 by nsikora          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ typedef	struct		s_camera
 	int				x;
 	int				y;
 	int				z;
+	void			*image;
+	unsigned int	*image_str;
 }					t_camera;
 
 typedef struct		s_ray
@@ -39,10 +41,11 @@ typedef struct		s_spot
 
 typedef struct		s_sphere
 {
-	int				x;
-	int				y;
-	int				z;
+	float			x;
+	float			y;
+	float			z;
 	int				rayon;
+	int				color;
 }					t_sphere;
 
 typedef	struct		s_dataset
@@ -57,6 +60,9 @@ typedef	struct		s_dataset
 void	declare_data(t_dataset *data);
 void	display_window(t_dataset *data);
 int		key_event(int key, t_dataset *data);
+void	declare_sphere(t_sphere *sphere);
+void	place_camera(t_camera *camera);
+void    calculate_sphere(t_sphere *sphere, t_dataset *data);
 void	free_for_all(t_dataset *data);
 
 #endif
